@@ -502,8 +502,3 @@ SET network_id = '59',
     country    = 'Slovakia',
     network    = 'O2'
 WHERE network_key = 60;
-
-select count(tracking_key)
-from delivery_tracking_fact dft
-         join time_dimension td on td.time_key = dft.time_key_fk
-where td.month = 'March';
