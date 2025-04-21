@@ -11,5 +11,14 @@ services:
       - POSTGRES_DB=postgres
     ports:
       - "5432:5432"
+  dbt:
+    build: .
+    volumes:
+      - ./dbt:/usr/app/dbt
+    working_dir: /usr/app/dbt
+    entrypoint: ["dbt"]
+    ports:
+      - "8080:8080"
+    command: ["docs", "serve", "--host", "0.0.0.0", "--port", "8080"]
 volumes:
   data_db: {}
